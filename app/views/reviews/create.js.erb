@@ -1,0 +1,30 @@
+reviewForm = document.getElementById("new_review");
+
+<% if @review.persisted? %>
+
+  // 1. Create the HTML code for the new review
+  newReview = "<%= j render 'reviews/show', review: @review %>";
+  // 2. Append the new review to my list of reviews
+  reviews = document.getElementById("reviews");
+  reviews.insertAdjacentHTML('beforeend', newReview);
+  // 3. Remove the content from the input
+  reviewForm.innerHTML = "<%= j render 'reviews/form', restaurant: @restaurant, review: Review.new %>"
+
+<% else %>
+
+  // 2. Re-render our form partial with our new invalid review
+  reviewForm.innerHTML = "<%= j render 'reviews/form', restaurant: @restaurant, review: @review %>"
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
